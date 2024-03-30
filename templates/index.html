@@ -1,100 +1,125 @@
-<!-- This is GUI for Mobile Price Detection Application Using Machine Learning Classifer -->
-
 <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
   <title>ML API</title>
 
-  <style>
-    /* CSS code for button */
+<style>
     body {
-      background-image: url('static/images/world.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
     }
-
-    /* CSS code for button */
-    .button_css {
-    color: #494949 !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #ffffff;
-    padding: 20px;
-    border: 4px solid #494949 !important;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
-    .button_css:hover {
-    color: #ffffff !important;
-    background: #f6b93b;
-    border-color: #f6b93b !important;
-    transition: all 0.4s ease 0s;
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
     }
-  </style>
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    input[type="text"] {
+        width: calc(50% - 22px);
+        margin: 0 10px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
 
 </head>
 
 <body>
 
-  <!-- Show Mobile Price  banner-->
-  <div>
-    <img src="static/images/mobile price.jpg" class="w3-border w3-padding" alt="Indian AI Hospital" style="width:100%">
-  </div>
+<div class="container">
+
+    <!-- Show Mobile Price banner -->
+    <!-- <div>
+        <img src="static/images/mobile price.jpg" class="w3-border w3-padding" alt="Indian AI Hospital" style="width:100%">
+    </div> -->
  
- 
- <div class="login">
-	
-    <!-- Get input for predict the cancer -->
-    <center>
-    <form action="{{ url_for('predict')}}"method="post">
-        <h1>Enter the value of tumor features >>></h1>
-        
-    	<input type="text" name="battery_power" placeholder="battery power" required="required" />
-        <input type="text" name="blue" placeholder="blue" required="required" />
-		<input type="text" name="clock_speed" placeholder="clock speed" required="required" />
-		<input type="text" name="dual_sim" placeholder="dual sim" required="required" />
-		<br>
-        <input type="text" name="fc" placeholder="fc" required="required" />
-		<input type="text" name="four_g" placeholder="four g" required="required" />
-    	<input type="text" name="int_memory" placeholder="int_memory" required="required" />
-        <input type="text" name="m_dep" placeholder="m dep" required="required" />
-        <br>
-		<input type="text" name="mobile wt" placeholder="mobile wt" required="required" />
-    	<input type="text" name="n_cores" placeholder="n_cores" required="required" />
-        <input type="text" name="pc" placeholder="pc" required="required" />
-		<input type="text" name="px_height" placeholder="px height" required="required" />
-		<br>
-    	<input type="text" name="ram" placeholder="ram" required="required" />
-        <input type="text" name="sc_h" placeholder="sc h" required="required" />
-		<input type="text" name="sc_w" placeholder="sc w" required="required" />
-    	<input type="text" name="talk_time" placeholder="talk time" required="required" />
-    	<br>
-        <input type="text" name="three_g" placeholder="three g" required="required" />
-		<input type="text" name="touch_screen" placeholder="touch screen" required="required" />
-    	<input type="text" name="wifi" placeholder="wifi" required="required" />
-        <input type="text" name="price_range" placeholder="price range" required="required" />
-        <br>
-        <br>
-        
-        <!-- Show button -->
-        <div class="button_cont" align="center"><a class="button_css" href="https://www.kaggle.com/arslanali4343/mobile-price-classification" target="_blank" rel="nofollow noopener">
-            <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict Price</strong></button></a>
-        </div>
-        
-    </form>
-    </center>
+    <div class="login">
+        <!-- Get input for predict the cancer -->
+        <center>
+            <form action="{{ url_for('predict')}}" method="post">
+                <h2>Enter the value of tumor features >></h2>
+                
+                <div>
+                    <input type="text" name="battery_power" placeholder="Battery Power (mAh)" required="required" />
+                    <input type="text" name="blue" placeholder="Bluetooth (0 or 1)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="clock_speed" placeholder="Clock Speed (GHz)" required="required" />
+                    <input type="text" name="dual_sim" placeholder="Dual SIM (0 or 1)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="fc" placeholder="Front Camera (MP)" required="required" />
+                    <input type="text" name="four_g" placeholder="4G (0 or 1)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="int_memory" placeholder="Internal Memory (GB)" required="required" />
+                    <input type="text" name="m_dep" placeholder="Mobile Depth (cm)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="mobile_wt" placeholder="Mobile Weight (g)" required="required" />
+                    <input type="text" name="n_cores" placeholder="Number of Cores" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="pc" placeholder="Primary Camera (MP)" required="required" />
+                    <input type="text" name="px_height" placeholder="Pixel Height (px)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="ram" placeholder="RAM (MB)" required="required" />
+                    <input type="text" name="sc_h" placeholder="Screen Height (cm)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="sc_w" placeholder="Screen Width (cm)" required="required" />
+                    <input type="text" name="talk_time" placeholder="Talk Time (hours)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="three_g" placeholder="3G (0 or 1)" required="required" />
+                    <input type="text" name="touch_screen" placeholder="Touch Screen (0 or 1)" required="required" />
+                </div>
+                <div>
+                    <input type="text" name="wifi" placeholder="WiFi (0 or 1)" required="required" />
+                    <input type="text" name="price_range" placeholder="Price Range (0, 1, 2, or 3)" required="required" />
+                </div>
+
+                <input type="submit" value="Predict Price" />
+            </form>
+        </center>
    
-   <!-- Show predicted output using ML model --> 
-   <div>
-       <center>
-   <h1>{{ prediction_text }}</h1>
-       </center>
-   </div>
-
- </div>
-
-</body>
-</html>
+        <!-- Show predicted output using ML model --> 
+        <div>
+            <center>
+                <h2>{{ prediction_text }}</h2>
+            </center>
+        </div
